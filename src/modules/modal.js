@@ -1,13 +1,13 @@
 "use strict";
 
 const openModalWindow = (item) => {
-    item.forEach((popup) => {
-        try {
-            const element = document.querySelector(`${popup.data}`);
+    item.forEach((openPopUp) => {
+        
+            const element = document.querySelector(`${openPopUp.data}`);
 
-            element.addEventListener('click', (event) => {
-
-                const modal = document.getElementById(popup.id),
+            function openCloseModal (event) {
+                
+                const modal = document.getElementById(openPopUp.id),
                     overlay = modal.querySelector('.overlay'),
                     wrappers = [].concat(overlay, ...modal.querySelectorAll('.form-wrapper'));
                 modal.style.display = 'block';
@@ -18,18 +18,18 @@ const openModalWindow = (item) => {
                     element.style.display = 'none';
                 }
 
-                wrappers.forEach(formWrapper => {
+                for (let i = 0; i < wrappers.length; i++) {
 
-                    formWrapper.addEventListener('click', (event) => {
+                    wrappers[i].addEventListener('click', (event) => {
                         const target = event.target;
-      
-                        if (target.matches('.close-form, .close_icon, .overlay, .form-wrapper, .btn.close-btn')) {
-                            modal.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        } catch (event) { }
+                
+                          if (target.matches('.close-form, .close_icon, .overlay, .form-wrapper, .btn.close-btn')) {
+                              modal.style.display = 'none';
+                          }
+                     });
+                 }
+        }
+        element.addEventListener('click', openCloseModal );
     });
 };
 

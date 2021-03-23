@@ -8,7 +8,14 @@ const validator = () => {
         allButton = document.querySelectorAll('button[type = submit]');
     let elementClone = document.getElementById('thanks').cloneNode(true);
 
-    const addModalAfter = (text) => { 
+    const checkRadio = (data) => { 
+        let check = [...data].some(radio => {
+            return radio.checked ? true : false;
+        });
+        return check;
+    };
+
+    const newModalAdd = (text) => { 
 
         elementClone.id = 'messageAfter';
         document.body.appendChild(elementClone);
@@ -20,12 +27,7 @@ const validator = () => {
         elementClone.querySelector('.form-content p').style.color = 'white';
     };
 
-    const checkRadio = (data) => { 
-        let check = [...data].some(radio => {
-            return radio.checked ? true : false;
-        });
-        return check;
-    };
+  
 
 
     allButton.forEach(button => {
@@ -33,7 +35,7 @@ const validator = () => {
             const target = e.target,
                 form = target.closest('form'),
                 inputs = form.querySelectorAll('input');
-            function noChecked() { //функция для вывода сообщения
+            function noChecked() { 
                 const messageAfter = document.getElementById('messageAfter');
                 messageAfter.style.display = 'block';
                 setTimeout(() => {
@@ -41,14 +43,15 @@ const validator = () => {
                     button.disabled = false;
                 }, 3000);
             }
-            function blocked(mess) {
-                addModalAfter(mess);
+            
+            function blocked(messageText) {
+                newModalAdd(messageText);
                 button.disabled = true;
                 noChecked();
             }
-            const inputText = (data) => { //проверка заполнения имени и телефона
+            const inputText = (data) => {
 
-                data.forEach(input => {
+                data.forEach((input) => {
                     if (input.matches('[name=name]') && input.value.length < 2) {
                         blocked('Имя должно содержать не менее 2 символов!');
                     }
@@ -78,10 +81,10 @@ const validator = () => {
     });
 
    
-    allInputsValid.forEach(input => { 
-        input.addEventListener('input', (e) => {
+    allInputsValid.forEach((input) => { 
+        input.addEventListener('input', (event) => {
 
-            const target = e.target;
+            const target = event.target;
             if (target.parentElement.matches('.price-message') && target.matches('[name=promo]')) {
                 target.value = target.value.replace(/[a-z]+/ig, '');
             }
