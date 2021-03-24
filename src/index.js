@@ -14,6 +14,8 @@ import validator from './modules/validator';
 import sendForms from './modules/sendForms';
 import calculator from './modules/calculator';
 
+import mainSlider from './modules/mainSlider';
+
 
 toggleMenu();
 clubLists();
@@ -32,3 +34,4 @@ services();
 validator();
 sendForms();
 calculator();
+mainSlider();
