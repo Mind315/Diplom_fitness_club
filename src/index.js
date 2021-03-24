@@ -29,6 +29,7 @@ modalWindow([
 togglePopUp();
 photoGallery(1500);
 
+scrollWindow();
 
 services();
 validator();
