@@ -3,7 +3,13 @@
 import clickSlider from './clickSlider';
 
 const ourServices = () => {
-    console.log('будут сервыси');
+    clickSlider({
+        main: '#services > .wrapper',
+        wraper: '.services-slider',
+        position: 0,
+        slidesToShow: 3,
+        infinity: false
+    });
  
 };
 

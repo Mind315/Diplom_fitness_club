@@ -16,7 +16,7 @@ const mainSlider = () => {
    };
 
    const startSlide = (time = 1500) => {
-      //вызов функции автослайдов
+      
       interval = setInterval(autoPlaySlide, time);
     };
    startSlide();
