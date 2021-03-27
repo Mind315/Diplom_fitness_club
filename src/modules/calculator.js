@@ -40,7 +40,7 @@ const calculator = (elem, club) => {
     }
 
     const dataForCalculator = (id, month, promo) => {
-        if (promo === 'ТЕЛО20') {
+        if (promo === 'ТЕЛО2021') {
             return Math.floor(data[id][month] * 0.7);
         } else {
             return data[id][month];
