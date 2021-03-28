@@ -134,7 +134,7 @@ const validator = () => {
     }
 
 
-    maskPhone('type=tel'); 
+    maskPhone('[type=tel]'); 
 };
 
 export default validator;
