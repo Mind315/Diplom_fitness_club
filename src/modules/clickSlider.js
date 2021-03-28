@@ -45,19 +45,15 @@ const clickSlider = ({ main, wraper, position = 0, slidesToShow, infinity = fals
     function prevSlider() {
         if (infinity || num > 0) {
             --num;
-            if (num < 0) {
-                num = slides.length - slidesToShow;
-            }
+            if (num < 0)   num = slides.length - slidesToShow;
             wrap.style.transform = `translateX(-${num * widthSlide}%)`;
         }
     }
+
     function nextSlider() {
         if (infinity || num < slides.length - slidesToShow) {
             ++num;
-
-            if (num > slides.length - slidesToShow) {
-                num = 0;
-            }
+            if (num > slides.length - slidesToShow)   num = 0;  
             wrap.style.transform = `translateX(-${num * widthSlide}%)`;
         }
     }
@@ -73,16 +69,8 @@ const clickSlider = ({ main, wraper, position = 0, slidesToShow, infinity = fals
 
         e.preventDefault();
         let target = e.target;
-
-
-        if (target.dataset.arrow === 'prev') {
-            prevSlider();
-        }
-
-        if (target.dataset.arrow === 'next') {
-            nextSlider();
-        }
-
+        if (target.dataset.arrow === 'prev')  prevSlider();
+        if (target.dataset.arrow === 'next')  nextSlider();
     });
 
     init();
