@@ -24,7 +24,7 @@ const validator = () => {
         let check = [...data].some(radio => {
             return radio.checked ? true : false;
         });
-        // return check;
+        return check;
     };
 
   
